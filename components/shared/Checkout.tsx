@@ -8,23 +8,9 @@ import { checkoutOrder } from "@/lib/actions/order.actions";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
-  const onCheckout = async () => {
-    const order = {
-      eventTitle: event.title,
-      eventId: event._id,
-      price: event.price,
-      isFree: event.isFree,
-      buyerId: userId,
-    };
-
-    await checkoutOrder(order);
-  };
-
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -38,6 +24,18 @@ const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
       );
     }
   }, []);
+
+  const onCheckout = async () => {
+    const order = {
+      eventTitle: event.title,
+      eventId: event._id,
+      price: event.price,
+      isFree: event.isFree,
+      buyerId: userId,
+    };
+
+    await checkoutOrder(order);
+  };
 
   return (
     <form action={onCheckout} method="post">
