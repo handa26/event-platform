@@ -56,12 +56,12 @@ npm run dev
 ## Screenshoots
 
 <div align="center">
-    <img width="100%" src="./public/assets/evently-homepage.png">
-    <img width="100%" src="./public/assets/evently-event-detail.png">
-    <img width="100%" src="./public/assets/evently-profile.png">
-    <img width="100%" src="./public/assets/evently-create.png">
-    <img width="100%" src="./public/assets/evently-stripe.png">
-    <img width="100%" src="./public/assets/evently-orders.png">
+    <img width="100%" src="./public/evently-homepage.png">
+    <img width="100%" src="./public/evently-event-detail.png">
+    <img width="100%" src="./public/evently-profile.png">
+    <img width="100%" src="./public/evently-create.png">
+    <img width="100%" src="./public/evently-stripe.png">
+    <img width="100%" src="./public/evently-orders.png">
 </div>
 
 ## Demo Evently
