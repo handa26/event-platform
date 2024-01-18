@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Evently <img src="https://img.shields.io/badge/Build%20with-NextJS-61dbfb?style=popout&logo=nextdotjs">
 
-## Getting Started
+## Contents
 
-First, run the development server:
+- [Description](#description)
+- [Features](#features)
+- [Installation](#installation-for-development)
+- [Tech Stack](#tech-stack)
+- [Screenshoots](#screenshoots)
+- [Tweeter](#tweeter)
 
+## Description
+
+Evently, drawing inspiration from Eventbrite, stands as an event management and ticketing website. It's a full-stack platform utilizing the MERN stack with Next.js as the React framework, offering seamless payment processing through Stripe. Users have the ability to create and manage their events, as well as purchase tickets for events created by any user.
+
+## Features
+
+### User Onboarding
+
+Using Clerk as authentication & user management, it'll ensures a smooth onboarding experience. Users can set their profile image, name, username, and add a bio to personalize their profiles.
+
+### Events Management
+
+Users have the ability to create events, events management, delete/update events, and also tracking users order.
+
+### Purchase tickets
+
+Buying an event ticket couldn't be easier with Stripe.
+
+### Search & filter
+
+Users have the ability to search for events or filter them by category. In terms of event management, users can navigate through an order list.
+
+## Installation for Development
+
+Use the package manager [npm](https://www.npmjs.com/get-npm) to install all required dependecies.
+```bash
+npm install
+```
+and then:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Framework: [Next.js](https://nextjs.org/)
+- Styling: [Tailwind CSS](https://nextjs.org/)
+- UI Library: [shadcn/ui](https://ui.shadcn.com/) (for form templates)
+- Authentication: [Clerk](https://clerk.com/)
+- Payment: [Stripe](https://dashboard.stripe.com/)
+- Upload images: [uploadthing](https://uploadthing.com/)
+- Server: Node.js/Express.js
+- Database: MongoDB with Mongoose
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Screenshoots
 
-## Learn More
+<div align="center">
+    <img width="100%" src="./public/assets/evently-homepage.png">
+    <img width="100%" src="./public/assets/evently-event-detail.png">
+    <img width="100%" src="./public/assets/evently-profile.png">
+    <img width="100%" src="./public/assets/evently-create.png">
+    <img width="100%" src="./public/assets/evently-stripe.png">
+    <img width="100%" src="./public/assets/evently-orders.png">
+</div>
 
-To learn more about Next.js, take a look at the following resources:
+## Demo Evently
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Let's try it.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<a href="https://event-platform-liard-eta.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/Tweeter%20Page-Link%20Demo-blue.svg?style=popout&logo=googlechrome"/>
+</a>
