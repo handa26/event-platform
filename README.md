@@ -69,5 +69,5 @@ npm run dev
 Let's try it.
 
 <a href="https://event-platform-liard-eta.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Tweeter%20Page-Link%20Demo-blue.svg?style=popout&logo=googlechrome"/>
+  <img src="https://img.shields.io/badge/Evently%20Page-Link%20Demo-blue.svg?style=popout&logo=googlechrome"/>
 </a>
