@@ -110,6 +110,8 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
     }
   }
 
+  console.log(event?.category.name)
+
   return (
     <Form {...form}>
       <form
@@ -302,6 +304,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       placeholder="Price"
                       {...field}
                       className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      disabled={form.getValues("isFree")}
                     />
                     <FormField
                       control={form.control}
@@ -321,6 +324,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                                 checked={field.value}
                                 id="isFree"
                                 className="mr-2 h-5 w-5 border-2 border-primary-500"
+                                disabled={form.getValues("price")}
                               />
                             </div>
                           </FormControl>

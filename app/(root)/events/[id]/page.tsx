@@ -1,20 +1,32 @@
 import Image from "next/image";
+import { auth } from "@clerk/nextjs";
+import Link from "next/link";
 
 import Collection from "@/components/shared/Collection";
 import CheckoutButton from "@/components/shared/CheckoutButton";
+import { Button } from "@/components/ui/button";
+import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
 
 import { SearchParamProps } from "@/types";
-import { getEventById, getRelatedEventsByCategory } from "@/lib/actions/event.actions";
+import {
+  getEventById,
+  getRelatedEventsByCategory,
+} from "@/lib/actions/event.actions";
 import { formatDateTime } from "@/lib/utils";
 
-const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) => {
+const EventDetails = async ({
+  params: { id },
+  searchParams,
+}: SearchParamProps) => {
   const event = await getEventById(id);
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.userId as string;
 
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
     page: searchParams.page as string,
-  })
+  });
 
   return (
     <>
@@ -52,7 +64,20 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
             </div>
 
             {/* CHECKOUT BUTTON */}
-            <CheckoutButton event={event} />
+            {event?.organizer._id === userId ? (
+              <div className="flex gap-3 p-[10px]">
+                <Link href={`/events/${event._id}/update`}>
+                  <Image
+                    src="/assets/icons/edit.svg"
+                    alt="edit"
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </div>
+            ) : (
+              <CheckoutButton event={event} />
+            )}
 
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">
@@ -100,14 +125,14 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
       <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">Related Events</h2>
 
-        <Collection 
+        <Collection
           data={relatedEvents?.data}
           emptyTitle="No Events Found"
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
-          limit={6}
-          page={1}
-          totalPages={2}
+          limit={3}
+          page={searchParams.page as string}
+          totalPages={relatedEvents?.totalPages}
         />
       </section>
     </>
